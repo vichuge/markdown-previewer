@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
+import Editor from './components/editor/Editor';
+import Previewer from './components/previewer/Previewer';
 
-function App() {
+const App = (props) => {
+  const [text, setText] = useState('');
+  const callback = (text) => {
+    console.log('Im in app comp');
+    console.log(text);
+    setText(text);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App my-auto">
+      <div className='row'>
+        <h1>Markdown previewer</h1>
+      </div>
+      <div className='row'>
+        <Editor parentCallback={callback}/>
+      </div>
+      <div className='row'>
+        <div className='result'>
+          <Previewer text={text} />
+        </div>
+      </div>
     </div>
   );
 }
