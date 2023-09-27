@@ -6,23 +6,19 @@ import Previewer from './components/previewer/Previewer';
 const App = (props) => {
   const [text, setText] = useState('');
   const callback = (text) => {
-    console.log('Im in app comp');
-    console.log(text);
     setText(text);
   };
 
   return (
-    <div className="App my-auto">
-      <div className='row'>
-        <h1>Markdown previewer</h1>
+    <div className="container">
+      <div className='row justify-content-center'>
+        <h1 className='text-center'>Markdown previewer</h1>
       </div>
       <div className='row'>
         <Editor parentCallback={callback}/>
       </div>
-      <div className='row'>
-        <div className='result'>
-          <Previewer text={text} />
-        </div>
+      <div className='row mt-5'>
+        <Previewer text={text} />
       </div>
     </div>
   );
