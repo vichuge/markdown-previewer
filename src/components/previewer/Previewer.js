@@ -3,9 +3,13 @@ import { marked } from 'marked';
 import './Previewer.scss';
 const Previewer = (props) => {
 
+  marked.options({
+    breaks: true
+  });
+
   return (
     <div className="Previewer">
-      <div dangerouslySetInnerHTML={{__html: marked(props.text)}}></div>
+      <div id='preview' dangerouslySetInnerHTML={{__html: marked(props.text)}}></div>
     </div>
     
   );
